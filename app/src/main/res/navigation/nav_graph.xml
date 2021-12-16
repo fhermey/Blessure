@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/DashboardFragment">
+
+    <fragment
+        android:id="@+id/DashboardFragment"
+        android:name="com.xeflo.blessure.BloodPressureDashboardFragment"
+        android:label="@string/dashboard_label"
+        tools:layout="@layout/fragment_blood_pressure_dashboard">
+
+        <action
+            android:id="@+id/action_DashboardFragment_to_ListFragment"
+            app:destination="@id/ListFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_AddFragment"
+            app:destination="@id/AddFragment" />
+        <action
+            android:id="@+id/action_DashboardFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ListFragment"
+        android:name="com.xeflo.blessure.BloodPressureListFragment"
+        android:label="@string/list_label"
+        tools:layout="@layout/fragment_blood_pressure_list">
+
+        <action
+            android:id="@+id/action_ListFragment_to_DashboardFragment"
+            app:destination="@id/DashboardFragment" />
+        <action
+            android:id="@+id/action_ListFragment_to_AddFragment"
+            app:destination="@id/AddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AlarmFragment"
+        android:name="com.xeflo.blessure.AlarmFragment"
+        android:label="@string/alarm_label"
+        tools:layout="@layout/fragment_alarm_list">
+        <action
+            android:id="@+id/aciton_AlarmFragment_to_AlarmAddFragment"
+            app:destination="@id/AlarmAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/AlarmAddFragment"
+        android:name="com.xeflo.blessure.AlarmAddFragment"
+        android:label="@string/alarm_add_label"
+        tools:layout="@layout/fragment_alarm_add">
+    </fragment>
+    <fragment
+        android:id="@+id/AddFragment"
+        android:name="com.xeflo.blessure.BloodPressureAddFragment"
+        android:label="@string/add_label"
+        tools:layout="@layout/fragment_blood_pressure_add">
+    </fragment>
+    <fragment
+        android:id="@+id/SettingsFragment"
+        android:name="com.xeflo.blessure.SettingsFragment"
+        android:label="@string/settings_label"
+        tools:layout="@layout/fragment_settings">
+    </fragment>
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.xeflo.blessure.LoginFragment"
+        android:label="@string/login_label"
+        tools:layout="@layout/fragment_login" />
+
+</navigation>

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BloodPressureDashboardFragment">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/bloodPressureListSwipeRefreshLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/inner_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/overview"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/last_entries"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <View
+                    android:id="@+id/avg_indicator"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    app:layout_constraintEnd_toStartOf="@id/avg"
+                    app:layout_constraintTop_toTopOf="@id/avg"
+                    app:layout_constraintBottom_toBottomOf="@id/avg"
+                    android:background="@drawable/circle" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@id/avg"
+                    app:layout_constraintEnd_toEndOf="@id/avg"
+                    app:layout_constraintBottom_toTopOf="@id/avg"
+                    android:textSize="14sp"
+                    android:textStyle="italic"
+                    android:text="@string/average_label" />
+
+                <LinearLayout
+                    android:id="@+id/avg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/details">
+                    <RelativeLayout
+                        android:layout_width="88dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/sys_avg_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:textSize="20sp"
+                            android:text="@string/sys_label"/>
+                        <TextView
+                            android:id="@+id/sys_avg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:textSize="20sp"
+                            tools:text="120"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="88dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/dia_avg_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:textSize="20sp"
+                            android:text="@string/dia_label"/>
+                        <TextView
+                            android:id="@+id/dia_avg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:textSize="20sp"
+                            tools:text="80"/>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/avg"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <View
+                        android:id="@+id/min_indicator"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        app:layout_constraintEnd_toStartOf="@id/min"
+                        app:layout_constraintTop_toTopOf="@id/min"
+                        app:layout_constraintBottom_toBottomOf="@id/min"
+                        android:background="@drawable/circle" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/min"
+                        app:layout_constraintEnd_toEndOf="@id/min"
+                        app:layout_constraintBottom_toTopOf="@id/min"
+                        android:textSize="11sp"
+                        android:textStyle="italic"
+                        android:text="@string/minimum_label" />
+
+                    <LinearLayout
+                        android:id="@+id/min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/max"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <RelativeLayout
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/sys_min_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:textSize="14sp"
+                                android:text="@string/sys_label"/>
+                            <TextView
+                                android:id="@+id/sys_min"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:textSize="14sp"
+                                tools:text="110"/>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/dia_min_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:textSize="14sp"
+                                android:text="@string/dia_label"/>
+                            <TextView
+                                android:id="@+id/dia_min"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:textSize="14sp"
+                                tools:text="65"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/max_indicator"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        app:layout_constraintEnd_toStartOf="@id/max"
+                        app:layout_constraintTop_toTopOf="@id/max"
+                        app:layout_constraintBottom_toBottomOf="@id/max"
+                        android:background="@drawable/circle" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="@id/max"
+                        app:layout_constraintEnd_toEndOf="@id/max"
+                        app:layout_constraintBottom_toTopOf="@id/max"
+                        android:textSize="11sp"
+                        android:textStyle="italic"
+                        android:text="@string/maximum_label" />
+
+                    <LinearLayout
+                        android:id="@+id/max"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/min"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+                        <RelativeLayout
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/sys_max_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:textSize="14sp"
+                                android:text="@string/sys_label"/>
+                            <TextView
+                                android:id="@+id/sys_max"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:textSize="14sp"
+                                tools:text="132"/>
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:id="@+id/dia_max_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:textSize="14sp"
+                                android:text="@string/dia_label"/>
+                            <TextView
+                                android:id="@+id/dia_max"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:textSize="14sp"
+                                tools:text="95"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/last_entries"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/overview"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bloodPressureListRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/item_blood_pressure" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/ic_plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

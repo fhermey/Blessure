@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1056552713063",
+    "project_id": "blessure-f5468",
+    "storage_bucket": "blessure-f5468.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056552713063:android:77c9ad86eccbcebbc80dc2",
+        "android_client_info": {
+          "package_name": "com.xeflo.blessure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056552713063-kig1aisopi1f1g562ovfrvad4m72m0il.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhxufeS3eeVdv4tezERteCqSh6slyrEVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056552713063-kig1aisopi1f1g562ovfrvad4m72m0il.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
